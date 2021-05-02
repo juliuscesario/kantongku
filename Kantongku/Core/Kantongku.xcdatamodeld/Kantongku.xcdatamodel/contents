@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="NotificationSetting" representedClassName="NotificationSetting" syncable="YES" codeGenerationType="class">
+        <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notif_pocket" optional="YES" attributeType="String"/>
+        <attribute name="notif_time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notif_type" optional="YES" attributeType="String"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="ofUsers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users" inverseName="notificationSetting" inverseEntity="Users"/>
+    </entity>
+    <entity name="Transaction" representedClassName="Transaction" syncable="YES" codeGenerationType="class">
+        <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="trans_amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="trans_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="trans_emoji" optional="YES" attributeType="String"/>
+        <attribute name="trans_name" optional="YES" attributeType="String"/>
+        <attribute name="trans_type" optional="YES" attributeType="String"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="ofTransactionCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransactionCategory" inverseName="transactionCategory" inverseEntity="TransactionCategory"/>
+        <relationship name="ofUsers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Users" inverseName="transaction" inverseEntity="Users"/>
+    </entity>
+    <entity name="TransactionCategory" representedClassName="TransactionCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="category_name" optional="YES" attributeType="String"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="transactionCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="ofTransactionCategory" inverseEntity="Transaction"/>
+    </entity>
+    <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
+        <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="first_name" optional="YES" attributeType="String"/>
+        <attribute name="last_name" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="notificationSetting" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NotificationSetting" inverseName="ofUsers" inverseEntity="NotificationSetting"/>
+        <relationship name="transaction" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="ofUsers" inverseEntity="Transaction"/>
+    </entity>
+    <elements>
+        <element name="Users" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="TransactionCategory" positionX="-54" positionY="36" width="128" height="89"/>
+        <element name="Transaction" positionX="-36" positionY="45" width="128" height="164"/>
+        <element name="NotificationSetting" positionX="-18" positionY="54" width="128" height="119"/>
+    </elements>
+</model>
